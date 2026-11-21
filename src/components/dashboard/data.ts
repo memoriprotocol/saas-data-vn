@@ -1,0 +1,241 @@
+import type { PlatformConfig, PlatformId, ResultItem } from "./types";
+
+export const PLATFORMS: PlatformConfig[] = [
+  {
+    id: "tiktok_shop",
+    name: "TikTok Shop & KOC",
+    shortName: "TikTok Shop",
+    badge: "1 Xu",
+    cost: 1,
+    placeholder: "Nhập tên shop, từ khóa sản phẩm hoặc @username KOC...",
+    category: "ecom",
+  },
+  {
+    id: "douyin",
+    name: "Douyin (TikTok TQ)",
+    shortName: "Douyin",
+    badge: "1 Xu",
+    cost: 1,
+    placeholder: "Nhập từ khóa tiếng Việt/Trung hoặc dán link kênh Douyin...",
+    category: "video",
+  },
+  {
+    id: "youtube",
+    name: "YouTube & Shorts",
+    shortName: "YouTube",
+    badge: "1 Xu",
+    cost: 1,
+    placeholder: "Nhập từ khóa tìm video bùng nổ hoặc link video đề xuất...",
+    category: "video",
+  },
+  {
+    id: "shopee",
+    name: "Shopee VN",
+    shortName: "Shopee",
+    badge: "2 Xu",
+    cost: 2,
+    placeholder: "Nhập từ khóa ngành hàng hoặc link gian hàng Shopee...",
+    category: "ecom",
+  },
+  {
+    id: "fb_ads",
+    name: "Facebook Ads",
+    shortName: "FB Ads",
+    badge: "10 Xu",
+    cost: 10,
+    placeholder: "Nhập tên Fanpage hoặc từ khóa quảng cáo đối thủ...",
+    category: "ads",
+  },
+  {
+    id: "google_ads",
+    name: "Google Ads",
+    shortName: "Google Ads",
+    badge: "10 Xu",
+    cost: 10,
+    placeholder: "Nhập tên miền website (VD: dienmayxanh.com) hoặc thương hiệu...",
+    category: "ads",
+  },
+  {
+    id: "social_mix",
+    name: "IG / X / FB Page / LinkedIn",
+    shortName: "Social",
+    badge: "2 Xu",
+    cost: 2,
+    placeholder: "Nhập @username hoặc link trang cá nhân / Fanpage cần quét...",
+    category: "social",
+  },
+];
+
+export const MOCK_RESULTS: Record<PlatformId, ResultItem[]> = {
+  tiktok_shop: [
+    {
+      id: "tt-1",
+      platform: "tiktok_shop",
+      title: "Áo khoác kaki 2 lớp form rộng chống gió kèm video gắn giỏ hàng",
+      author: "@thanhdongian.dtt",
+      thumbnail:
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80",
+      metricPrimaryLabel: "Đã bán",
+      metricPrimaryValue: "14.200 đơn",
+      metricPrimaryNum: 14200,
+      metricSecondaryLabel: "View Video",
+      metricSecondaryValue: "482.5K",
+      tag: "Mall • Có Video Ad",
+      date: "2 ngày trước",
+      targetUrl: "https://www.tiktok.com",
+      downloadUrl: "https://www.tiktok.com",
+    },
+    {
+      id: "tt-2",
+      platform: "tiktok_shop",
+      title: "Set bình giữ nhiệt inox 316 hiển thị nhiệt độ 1000ml",
+      author: "@giadungnhaxinh.vn",
+      thumbnail:
+        "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&q=80",
+      metricPrimaryLabel: "Đã bán",
+      metricPrimaryValue: "8.950 đơn",
+      metricPrimaryNum: 8950,
+      metricSecondaryLabel: "View Video",
+      metricSecondaryValue: "215.0K",
+      tag: "Shop Yêu Thích",
+      date: "5 ngày trước",
+      targetUrl: "https://www.tiktok.com",
+      downloadUrl: "https://www.tiktok.com",
+    },
+    {
+      id: "tt-3",
+      platform: "tiktok_shop",
+      title: "Đèn ngủ cảm biến chuyển động sạc USB gắn tường thông minh",
+      author: "@decorphongngu99",
+      thumbnail:
+        "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=600&q=80",
+      metricPrimaryLabel: "Đã bán",
+      metricPrimaryValue: "3.410 đơn",
+      metricPrimaryNum: 3410,
+      metricSecondaryLabel: "View Video",
+      metricSecondaryValue: "96.4K",
+      tag: "Đang lên xu hướng",
+      date: "Hôm nay",
+      targetUrl: "https://www.tiktok.com",
+      downloadUrl: "https://www.tiktok.com",
+    },
+  ],
+  douyin: [
+    {
+      id: "dy-1",
+      platform: "douyin",
+      title: "Kệ gia vị xoay 360 độ thông minh (Tự động dịch từ khóa VN → CN)",
+      author: "家居好物精选 (Douyin)",
+      thumbnail:
+        "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=600&q=80",
+      metricPrimaryLabel: "Lượt tim",
+      metricPrimaryValue: "328.4K tim",
+      metricPrimaryNum: 328400,
+      metricSecondaryLabel: "Tỷ lệ xem hết",
+      metricSecondaryValue: "68.5%",
+      tag: "Kênh nhỏ bùng nổ",
+      date: "3 ngày trước",
+      targetUrl: "https://www.douyin.com",
+      downloadUrl: "https://www.douyin.com",
+    },
+  ],
+  youtube: [
+    {
+      id: "yt-1",
+      platform: "youtube",
+      title: "Review chi tiết top 5 phụ kiện bàn làm việc tối giản đáng mua nhất",
+      author: "Tech Setup VN (4.2K Sub)",
+      thumbnail:
+        "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=600&q=80",
+      metricPrimaryLabel: "Lượt xem",
+      metricPrimaryValue: "312.000 view",
+      metricPrimaryNum: 312000,
+      metricSecondaryLabel: "Outlier Score",
+      metricSecondaryValue: "74.2x Sub",
+      tag: "Key bùng nổ 7 ngày",
+      date: "4 ngày trước",
+      targetUrl: "https://www.youtube.com",
+    },
+  ],
+  shopee: [
+    {
+      id: "sp-1",
+      platform: "shopee",
+      title: "Quần ống rộng nữ cạp cao chất tuyết mưa không nhăn",
+      author: "Thoitrangnu.official",
+      thumbnail:
+        "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&q=80",
+      metricPrimaryLabel: "Đã bán",
+      metricPrimaryValue: "29.400 đơn",
+      metricPrimaryNum: 29400,
+      metricSecondaryLabel: "Đánh giá",
+      metricSecondaryValue: "4.9 ★ (6.1K)",
+      tag: "Shopee Mall • Nội địa",
+      date: "Cập nhật hôm nay",
+      targetUrl: "https://shopee.vn",
+    },
+  ],
+  fb_ads: [
+    {
+      id: "fb-1",
+      platform: "fb_ads",
+      title:
+        "Mẫu Ads: Giảm 40% combo chăm sóc da ban đêm - Miễn phí vận chuyển toàn quốc",
+      author: "Fanpage: Derma Care Vietnam",
+      thumbnail:
+        "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=600&q=80",
+      metricPrimaryLabel: "Trạng thái",
+      metricPrimaryValue: "Đang chạy (18 ngày)",
+      metricPrimaryNum: 18,
+      metricSecondaryLabel: "Định dạng",
+      metricSecondaryValue: "Video 1:1",
+      tag: "Active • VN",
+      date: "Bắt đầu 03/11",
+      targetUrl: "https://www.facebook.com/ads/library",
+    },
+  ],
+  google_ads: [
+    {
+      id: "gg-1",
+      platform: "google_ads",
+      title: "Quảng cáo Search & Shopping: Phần mềm quản lý bán hàng đa kênh",
+      author: "Domain: sapo.vn",
+      thumbnail:
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
+      metricPrimaryLabel: "Số mẫu Ads",
+      metricPrimaryValue: "42 mẫu hoạt động",
+      metricPrimaryNum: 42,
+      metricSecondaryLabel: "Kênh hiển thị",
+      metricSecondaryValue: "Search + YouTube",
+      tag: "Google Transparency",
+      date: "Cập nhật hôm nay",
+      targetUrl: "https://adstransparency.google.com",
+    },
+  ],
+  social_mix: [
+    {
+      id: "sm-1",
+      platform: "social_mix",
+      title: "Tổng hợp bài đăng tương tác cao nhất 30 ngày gần đây",
+      author: "@creator.vietnam",
+      thumbnail:
+        "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&q=80",
+      metricPrimaryLabel: "Tương tác",
+      metricPrimaryValue: "45.8K lượt",
+      metricPrimaryNum: 45800,
+      metricSecondaryLabel: "Nền tảng",
+      metricSecondaryValue: "Instagram / Threads",
+      tag: "Hồ sơ công khai",
+      date: "Hôm nay",
+      targetUrl: "https://www.instagram.com",
+    },
+  ],
+};
+
+export const PLATFORM_MAP = PLATFORMS.reduce(
+  (acc, p) => {
+    acc[p.id] = p;
+    return acc;
+  },
+  {} as Record<PlatformId, PlatformConfig>
+);

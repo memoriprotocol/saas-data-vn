@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DataRadar VN
 
-## Getting Started
+All-in-One data lookup dashboard cho **TikTok Shop & KOC**, **Douyin**, **YouTube & Shorts**, **Shopee VN**, **Facebook Ads**, **Google Ads** và social (IG/X/FB Page/LinkedIn).
 
-First, run the development server:
+Tra cứu dữ liệu "đang bùng nổ" từ nhiều nền tảng trong một giao diện duy nhất, có tính phí theo lượt quét (Xu) và cache lịch sử miễn phí.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## Stack
+
+| Thành phần | Công nghệ |
+|---|---|
+| Framework | Next.js 16 (App Router, Turbopack) |
+| UI | React 19 + Tailwind CSS v4 |
+| Icons | Lucide React |
+| Typography | Fira Sans + Fira Code (Google Fonts) |
+
+---
+
+## Design System
+
+Toàn bộ giao diện được sinh từ skill [`ui-ux-pro-max`](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill).
+
+- **Style:** Data-Dense Dashboard (+ Dark Mode OLED cho dark theme)
+- **Palette:** Blue data (`#1E40AF`) + Amber accent (`#D97706`)
+- **Nguồn chân lý:** [`design-system/dataradar-vn/MASTER.md`](./design-system/dataradar-vn/MASTER.md)
+
+### Token-driven theming
+
+Design token nằm trong [`src/app/globals.css`](./src/app/globals.css) theo pattern `@theme inline` + CSS variables runtime, nên **mọi utility Tailwind resolve đúng theo theme** (light/dark) thay vì bị đóng băng lúc build:
+
+```
+@theme inline {
+  --color-primary: var(--ds-primary);
+  ...
+}
+:root { --ds-primary: #1e40af; }   /* light */
+.dark { --ds-primary: #3b82f6; }   /* dark  */
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Accessibility
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Đã kiểm chứng bằng script tự động trên cả 2 theme:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- ✅ Contrast text ≥ 4.5:1 (AA) — **0 vi phạm**
+- ✅ Focus ring nhìn thấy trên mọi control (`WCAG 2.2`)
+- ✅ `prefers-reduced-motion` được tôn trọng
+- ✅ Không có horizontal overflow ở 375px
+- ✅ Icon decorative dùng `aria-hidden`, icon-only button có `aria-label`
+- ✅ Theme toggle dùng `useSyncExternalStore` — không có setState trong effect
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Cấu trúc
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+├── app/
+│   ├── layout.tsx          # Root layout, Fira fonts, pre-paint theme script
+│   ├── page.tsx            # Server Component shell
+│   └── globals.css         # Design tokens + component utilities
+├── components/
+│   └── dashboard/
+│       ├── dashboard.tsx   # Client Component (interactive)
+│       ├── data.ts         # Platform config + mock data
+│       └── types.ts        # Shared types
+└── design-system/
+    └── dataradar-vn/
+        └── MASTER.md       # Design system source of truth
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Tính năng
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **7 nền tảng** với bộ lọc động theo từng loại (thị trường / thời gian / cách sắp xếp / trạng thái Ads)
+- **Hai tầng lọc**
+  - *Tầng 1* — gửi kèm API gốc (có tính phí)
+  - *Tầng 2* — lọc tức thì trong kết quả đã tải (0 Xu)
+- **Cache lịch sử** — tìm lại từ khóa cũ miễn phí 0 Xu
+- **Hệ thống Xu** — trừ Xu theo giá nền tảng, tự mở modal nạp khi hết
+- **Modal VietQR** — 3 gói Starter / Pro / Agency
+- **Light + Dark theme** — tự nhớ lựa chọn, không nháy trắng khi load
+- **Responsive** — 375px / 768px / 1024px / 1440px
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Chạy local
+
+```bash
+npm install
+npm run dev
+```
+
+Mở [http://localhost:3000](http://localhost:3000).
+
+## Scripts
+
+```bash
+npm run dev     # dev server
+npm run build   # production build
+npm run start   # serve production build
+npm run lint    # ESLint
+```
+
+---
+
+## Roadmap
+
+- [ ] Kết nối Backend Proxy thật (`/api/search`) — xem TODO trong `dashboard.tsx`
+- [ ] Tích hợp TikHub API cho dữ liệu thật
+- [ ] Trang chi tiết / phân tích sâu
+- [ ] Deploy Vercel
+
+---
+
+## License
+
+MIT

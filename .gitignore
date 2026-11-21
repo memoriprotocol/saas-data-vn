@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# browser automation profiles
+.rea-chrome-profile/
+.chrome-profile/
+
+# scraped / generated analysis artifacts
+kalodata-analysis/
+
+# local logs
+dev.log
+dev.err.log
